@@ -1,6 +1,10 @@
 package main
 
-import "testing"
+import (
+	"testing"
+
+	"github.com/stretchr/testify/assert"
+)
 
 func Test_Estimate(t *testing.T) {
 	cases := []struct {
@@ -55,7 +59,7 @@ func Test_Estimate(t *testing.T) {
 
 	for _, tc := range cases {
 		if estimate(tc.levels) != tc.total {
-			t.Errorf("expected %d, got %d", tc.total, estimate(tc.levels))
+			assert.Equal(t, tc.total, estimate(tc.levels))
 		}
 	}
 }
